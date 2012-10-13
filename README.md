@@ -22,7 +22,14 @@ You can effectuate the user's preference for allowing or declining cookies as fo
     $.cookiecookie.allow();
     $.cookiecookie.decline();
 
-All external Javascript can then be conditionally loaded, based on this setting:
+Maybe used like this, that is up to you:
+
+    $('.cookie-notice-allow').click(function(e) {
+        e.preventDefault();
+        $.cookiecookie.allow();
+    }
+
+All external Javascript should then be conditionally loaded:
 
     if ($.cookiecookie.isAllowed()) {
         // ...
