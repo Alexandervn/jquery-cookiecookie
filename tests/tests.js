@@ -1,8 +1,9 @@
-(function($, document) {
+(function ($, document) {
+    "use strict";
 
     // Test does not work on localhost
     // Remove all cookies before testing
-    test("cookiecookie tests", function() {
+    test("cookiecookie tests", function () {
 
         var defaultCookieOptions,
             newCookieOptions;
@@ -32,12 +33,12 @@
         deepEqual($.cookiecookie.getCookieOptions(), defaultCookieOptions, 'Default cookie options are set again');
 
         // Set: called three times, for remove, allow en decline
-        $(document).bind('cookiecookie.set', function(e, setting) {
+        $(document).on('cookiecookie.set', function (e, setting) {
             equal(setting, $.cookiecookie.get(), 'Run cookiecookie.set event when setting is changed');
         });
 
         // 1. Remove
-        $(document).bind('cookiecookie.removed', function() {
+        $(document).on('cookiecookie.removed', function () {
             strictEqual($.cookiecookie.get(), null, 'Run cookiecookie.removed event when removed');
         });
         $.cookiecookie.remove();
@@ -45,7 +46,7 @@
         strictEqual($.cookie('ccs'), null, "Saved cookie should now be null");
 
         // 2. Allow
-        $(document).bind('cookiecookie.allowed', function() {
+        $(document).on('cookiecookie.allowed', function () {
             strictEqual($.cookiecookie.isAllowed(), true, 'Run cookiecookie.allowed event when allowed');
         });
         $.cookiecookie.allow();
@@ -53,7 +54,7 @@
         strictEqual($.cookie('ccs'), 'true', "Saved cookie should now be 'true'");
 
         // 3. Decline
-        $(document).bind('cookiecookie.declined', function() {
+        $(document).on('cookiecookie.declined', function () {
             strictEqual($.cookiecookie.isDeclined(), true, 'Run cookiecookie.declined event when declined');
         });
         $.cookiecookie.decline();
