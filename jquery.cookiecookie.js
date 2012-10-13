@@ -1,3 +1,9 @@
+/**
+ * jQuery Cookiecookie v0.9
+ * https://github.com/alexandervn/jquery-cookiecookie
+ *
+ * Copyright Alexander van Noord 2012
+ */
 (function ($, document) {
     "use strict";
 
